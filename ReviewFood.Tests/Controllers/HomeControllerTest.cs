@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ReviewFood;
-using ReviewFood.Controllers;
+using IdentitySample.Controllers;
 
 namespace ReviewFood.Tests.Controllers
 {
