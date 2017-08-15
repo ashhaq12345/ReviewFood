@@ -8,11 +8,11 @@ namespace ReviewFood.Models
 {
     public class Review
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Description { get; set; }
         public double Rating { get; set; }
-        public Food Food { get; set; }
-        public int FoodId { get; set; }
+        public virtual Food Food { get; set; }
+        public long FoodId { get; set; }
         public virtual ApplicationUser User{ get; set; }
         public virtual string UserId { get; set; }
     }

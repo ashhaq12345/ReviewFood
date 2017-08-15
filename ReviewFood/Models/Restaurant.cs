@@ -9,7 +9,7 @@ namespace ReviewFood.Models
     public class Restaurant
     {
         [Required]
-        public int Id { get; set; }
+        public long Id { get; set; }
         [Required]
         public string Name { get; set; }
         public List<Food> Foods { get; set; }

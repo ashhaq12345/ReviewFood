@@ -7,11 +7,11 @@ namespace ReviewFood.Models
 {
     public class Food
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Picture { get; set; }
-        public int RestaurantId { get; set; }
-        public Restaurant Restaurant { get; set; }
+        public long RestaurantId { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
         public List<Review> Reviews { get; set; }
     }
 }
