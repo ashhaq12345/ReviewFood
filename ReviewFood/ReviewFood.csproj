@@ -190,18 +190,37 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BLL\FoodManager.cs" />
+    <Compile Include="BLL\RestaurantManager.cs" />
+    <Compile Include="BLL\ReviewManager.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="DAL\CommonRepository.cs" />
+    <Compile Include="DAL\FoodRepository.cs" />
+    <Compile Include="DAL\RestaurantRepository.cs" />
+    <Compile Include="DAL\ReviewRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\Food.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Interface\ICommonRepository.cs" />
+    <Compile Include="Models\Interface\IFoodManager.cs" />
+    <Compile Include="Models\Interface\IFoodRepository.cs" />
+    <Compile Include="Models\Interface\IManager.cs" />
+    <Compile Include="Models\Interface\IRestaurantManager.cs" />
+    <Compile Include="Models\Interface\IRestaurantRepository.cs" />
+    <Compile Include="Models\Interface\IReviewManager.cs" />
+    <Compile Include="Models\Interface\IReviewRepository.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Restaurant.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -287,6 +306,11 @@
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Restaurant\Create.cshtml" />
+    <Content Include="Views\Restaurant\Delete.cshtml" />
+    <Content Include="Views\Restaurant\Details.cshtml" />
+    <Content Include="Views\Restaurant\Edit.cshtml" />
+    <Content Include="Views\Restaurant\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
