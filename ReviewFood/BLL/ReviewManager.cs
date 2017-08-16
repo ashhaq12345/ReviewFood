@@ -8,7 +8,7 @@ using System.Web;
 
 namespace ReviewFood.BLL
 {
-    public class ReviewManager
+    public class ReviewManager: IReviewManager
     {
         private IReviewRepository _repository;
 

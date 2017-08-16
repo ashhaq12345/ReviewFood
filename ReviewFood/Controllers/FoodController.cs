@@ -8,115 +8,122 @@ using System.Web;
 using System.Web.Mvc;
 using IdentitySample.Models;
 using ReviewFood.Models;
-using ReviewFood.BLL;
 using ReviewFood.Models.Interface;
+using ReviewFood.BLL;
+using Microsoft.AspNet.Identity;
 
 namespace ReviewFood.Controllers
 {
-    public class RestaurantController : Controller
+    public class FoodController : Controller
     {
+        private IFoodManager _foodManager;
         private IRestaurantManager _restaurantManager;
 
-        public RestaurantController()
+        public FoodController()
         {
+            _foodManager = new FoodManager();
             _restaurantManager = new RestaurantManager();
         }
 
-        // GET: Restaurant
+        // GET: Food
         public ActionResult Index()
         {
-            var restaurants = _restaurantManager.GetAll();
-            return View(restaurants.ToList());
+            var foods = _foodManager.GetAll();
+            return View(foods.ToList());
         }
 
-        // GET: Restaurant/Details/5
+        // GET: Food/Details/5
         public ActionResult Details(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Restaurant restaurant = _restaurantManager.GetById((long)id);
-            if (restaurant == null)
+            Food food = _foodManager.GetById((long)id);
+            if (food == null)
             {
                 return HttpNotFound();
             }
-            return View(restaurant);
+            return View(food);
         }
 
-        // GET: Restaurant/Create
+        // GET: Food/Create
         public ActionResult Create()
         {
+            ViewBag.RestaurantId = new SelectList(_restaurantManager.GetAll(), "Id", "Name");
             return View();
         }
 
-        // POST: Restaurant/Create
+        // POST: Food/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Restaurant restaurant)
+        public ActionResult Create([Bind(Include = "Id,Name,Picture,RestaurantId")] Food food)
         {
             if (ModelState.IsValid)
             {
-                _restaurantManager.Add(restaurant);
+                _foodManager.Add(food);
                 return RedirectToAction("Index");
             }
 
-            return View(restaurant);
+            ViewBag.RestaurantId = new SelectList(_restaurantManager.GetAll(), "Id", "Name");
+            return View(food);
         }
 
-        // GET: Restaurant/Edit/5
+        // GET: Food/Edit/5
         public ActionResult Edit(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Restaurant restaurant = _restaurantManager.GetById((long)id);
-            if (restaurant == null)
+            Food food = _foodManager.GetById((long)id);
+            if (food == null)
             {
                 return HttpNotFound();
             }
-            return View(restaurant);
+            ViewBag.RestaurantId = new SelectList(_restaurantManager.GetAll(), "Id", "Name");
+            return View(food);
         }
 
-        // POST: Restaurant/Edit/5
+        // POST: Food/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Restaurant restaurant)
+        public ActionResult Edit([Bind(Include = "Id,Name,Picture,RestaurantId")] Food food)
         {
             if (ModelState.IsValid)
             {
-                _restaurantManager.Update(restaurant);
+                _foodManager.Update(food);
                 return RedirectToAction("Index");
             }
-            return View(restaurant);
+            ViewBag.RestaurantId = new SelectList(_restaurantManager.GetAll(), "Id", "Name");
+            return View(food);
         }
 
-        // GET: Restaurant/Delete/5
+        // GET: Food/Delete/5
         public ActionResult Delete(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Restaurant restaurant = _restaurantManager.GetById((long)id);
-            if (restaurant == null)
+            Food food = _foodManager.GetById((long)id);
+            if (food == null)
             {
                 return HttpNotFound();
             }
-            return View(restaurant);
+            return View(food);
         }
 
-        // POST: Restaurant/Delete/5
+        // POST: Food/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            _restaurantManager.Remove(id);
+            _foodManager.Remove(id);
             return RedirectToAction("Index");
         }
     }
