@@ -10,7 +10,7 @@ using IdentitySample.Models;
 using ReviewFood.Models;
 using ReviewFood.Models.Interface;
 using ReviewFood.BLL;
-using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace ReviewFood.Controllers
 {
@@ -59,15 +59,24 @@ namespace ReviewFood.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Picture,RestaurantId")] Food food)
+        public ActionResult Create([Bind(Include = "Id,Name,Picture,RestaurantId")] Food food, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if (file != null && file.ContentLength > 0)
+                {
+                    // extract only the fielname
+                    var fileName = Path.GetFileName(file.FileName);
+                    // store the file inside ~/App_Data/uploads folder
+                    var path = Path.Combine(Server.MapPath("~/Content"), fileName);
+                    file.SaveAs(path);
+                    food.FilePath = "Content/" + fileName;
+                }
                 _foodManager.Add(food);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RestaurantId = new SelectList(_restaurantManager.GetAll(), "Id", "Name");
+            ViewBag.RestaurantId = new SelectList(_restaurantManager.GetAll(), "Id", "Name", food.RestaurantId);
             return View(food);
         }
 
@@ -83,7 +92,7 @@ namespace ReviewFood.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.RestaurantId = new SelectList(_restaurantManager.GetAll(), "Id", "Name");
+            ViewBag.RestaurantId = new SelectList(_restaurantManager.GetAll(), "Id", "Name", food.RestaurantId);
             return View(food);
         }
 
@@ -99,7 +108,7 @@ namespace ReviewFood.Controllers
                 _foodManager.Update(food);
                 return RedirectToAction("Index");
             }
-            ViewBag.RestaurantId = new SelectList(_restaurantManager.GetAll(), "Id", "Name");
+            ViewBag.RestaurantId = new SelectList(_restaurantManager.GetAll(), "Id", "Name", food.RestaurantId);
             return View(food);
         }
 

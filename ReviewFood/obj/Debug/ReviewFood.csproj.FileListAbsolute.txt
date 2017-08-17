@@ -143,6 +143,6 @@ D:\ASP\Projects\FoodReview\ReviewFood\ReviewFood\bin\System.Web.Razor.xml
 D:\ASP\Projects\FoodReview\ReviewFood\ReviewFood\bin\System.Web.WebPages.xml
 D:\ASP\Projects\FoodReview\ReviewFood\ReviewFood\bin\System.Web.WebPages.Deployment.xml
 D:\ASP\Projects\FoodReview\ReviewFood\ReviewFood\bin\System.Web.WebPages.Razor.xml
-D:\ASP\Projects\FoodReview\ReviewFood\ReviewFood\obj\Debug\ReviewFood.csprojResolveAssemblyReference.cache
 D:\ASP\Projects\FoodReview\ReviewFood\ReviewFood\obj\Debug\ReviewFood.dll
 D:\ASP\Projects\FoodReview\ReviewFood\ReviewFood\obj\Debug\ReviewFood.pdb
+D:\ASP\Projects\FoodReview\ReviewFood\ReviewFood\obj\Debug\ReviewFood.csprojResolveAssemblyReference.cache
