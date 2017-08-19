@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using IdentitySample.Models;
 using ReviewFood.Models;
 using ReviewFood.Models.Interface;
 using ReviewFood.BLL;
@@ -17,7 +16,6 @@ namespace ReviewFood.Controllers
     {
         private IReviewManager _reviewManager;
         private IFoodManager _foodManager;
-        ApplicationDbContext db = new ApplicationDbContext();
 
         public ReviewController()
         {
