@@ -12,7 +12,5 @@ namespace ReviewFood.Models
         public string Name { get; set; }
         public string FilePath { get; set; }
         public long RestaurantId { get; set; }
-        public virtual Restaurant Restaurant { get; set; }
-        public List<Review> Reviews { get; set; }
     }
 }

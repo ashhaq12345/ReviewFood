@@ -16,5 +16,7 @@ namespace ReviewFood.Models.Database
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Food> Foods { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 }
