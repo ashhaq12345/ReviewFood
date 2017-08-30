@@ -7,7 +7,7 @@ using ReviewFood.Models;
 using IdentitySample.Models;
 using System.Data.Entity.Migrations;
 using System.Data.Entity;
-a
+ashique
 namespace ReviewFood.DAL
 {
     public class FoodRepository : CommonRepository<Food>, IFoodRepository
